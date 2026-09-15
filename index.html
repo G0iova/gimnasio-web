@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IMPERIO GYM</title>
+
+  <style>
+    :root {
+      --principal: #ff5a00;
+      --fondo: #0d0d0d;
+      --fondo2: #171717;
+      --texto: #ffffff;
+      --gris: #aaaaaa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+    }
+
+    /* =========================
+       NAVEGACIÓN
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 7%;
+
+      background: rgba(13, 13, 13, 0.95);
+      border-bottom: 1px solid #292929;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .logo span {
+      color: var(--principal);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--principal);
+    }
+
+    /* =========================
+       PORTADA
+    ========================= */
+
+    .hero {
+      min-height: 80vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 80px 7%;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.9),
+          rgba(0,0,0,.3)
+        ),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=80");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .tag {
+      color: var(--principal);
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(45px, 7vw, 80px);
+      line-height: 1;
+      margin: 15px 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .boton {
+      display: inline-block;
+
+      padding: 14px 23px;
+
+      border-radius: 8px;
+
+      background: var(--principal);
+      color: white;
+
+      text-decoration: none;
+      font-weight: bold;
+
+      margin-right: 10px;
+    }
+
+    .boton:hover {
+      opacity: .85;
+    }
+
+    .boton-secundario {
+      background: transparent;
+      border: 1px solid #777;
+    }
+
+    /* =========================
+       SECCIONES
+    ========================= */
+
+    section {
+      padding: 80px 7%;
+    }
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .descripcion {
+      color: var(--gris);
+      margin-bottom: 35px;
+    }
+
+    /* =========================
+       SERVICIOS
+    ========================= */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--fondo2);
+
+      padding: 28px;
+
+      border-radius: 15px;
+
+      border: 1px solid #292929;
+
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--principal);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: var(--gris);
+    }
+
+    /* =========================
+       PRECIOS
+    ========================= */
+
+    .precio {
+      font-size: 32px;
+
+      color: var(--principal);
+
+      font-weight: bold;
+
+      margin: 15px 0;
+    }
+
+    /* =========================
+       HORARIOS
+    ========================= */
+
+    .tabla {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      background: var(--fondo2);
+
+      border-radius: 12px;
+
+      overflow: hidden;
+    }
+
+    .tabla th,
+    .tabla td {
+      padding: 17px;
+
+      text-align: left;
+
+      border-bottom: 1px solid #292929;
+    }
+
+    .tabla th {
+      color: var(--principal);
+    }
+
+    /* =========================
+       CONTACTO
+    ========================= */
+
+    .contacto {
+      background: var(--fondo2);
+    }
+
+    .contacto-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+      gap: 40px;
+    }
+
+    .datos p {
+      margin: 12px 0;
+
+      color: #ddd;
+    }
+
+    .whatsapp {
+      background: #ff5a00;
+
+      color: white;
+
+      padding: 30px;
+
+      border-radius: 15px;
+    }
+
+    .whatsapp h3 {
+      font-size: 28px;
+
+      margin-bottom: 10px;
+    }
+
+    .whatsapp a {
+      display: inline-block;
+
+      margin-top: 20px;
+
+      color: white;
+
+      font-weight: bold;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+
+      padding: 30px;
+
+      color: #777;
+
+      border-top: 1px solid #292929;
+    }
+
+    /* =========================
+       CELULAR
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      section {
+        padding: 60px 6%;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     🔧 DATOS DEL GIMNASIO
+     
+     CAMBIÁ ESTAS COSAS PARA CADA CLIENTE
+===================================================== -->
+
+
+<header>
+
+  <div class="logo">
+    IMPERIO <span>GYM</span>
+  </div>
+
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#precios">Precios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+</header>
+
+
+<!-- =====================================================
+     🏋️ PORTADA
+===================================================== -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="tag">
+      GIMNASIO & ENTRENAMIENTO
+    </div>
+
+    <h1>
+      Entrená fuerte.<br>
+      Viví mejor.
+    </h1>
+
+    <p>
+      Un espacio equipado para ayudarte a alcanzar
+      tus objetivos.
+    </p>
+
+    <a
+      class="boton"
+      href="#contacto"
+    >
+      Quiero entrenar
+    </a>
+
+    <a
+      class="boton boton-secundario"
+      href="#precios"
+    >
+      Ver precios
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     🏋️ MUSCULACIÓN
+===================================================== -->
+
+<section id="servicios">
+
+  <h2>Musculación</h2>
+
+  <p class="descripcion">
+    Todo lo que necesitás para entrenar y alcanzar
+    tus objetivos.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+
+      <h3> Equipamiento</h3>
+
+      <p>
+        Equipamiento completo para trabajar
+        todos los grupos musculares.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Entrenamiento libre</h3>
+
+      <p>
+        Entrená a tu ritmo y armá tu rutina
+        según tus objetivos.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Horarios amplios</h3>
+
+      <p>
+        Entrená en horarios cómodos
+        que se adapten a tu rutina.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3> Ubicación</h3>
+
+      <p>
+        Un espacio preparado para que puedas
+        entrenar cómodamente.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</section>
+
+
+<!-- =====================================================
+     🕐 HORARIOS
+===================================================== -->
+
+<section id="horarios">
+
+  <h2>Horarios</h2>
+
+  <p class="descripcion">
+    Nuestro horario de atención.
+  </p>
+
+
+  <table class="tabla">
+
+    <tr>
+      <th>Día</th>
+      <th>Horario</th>
+    </tr>
+
+    <tr>
+      <td>Lunes a viernes</td>
+      <td>07:00 AM - 12:00 AM</td>
+      <td>14:00 PM - 22:00 PM</td>
+
+    </tr>
+
+    <tr>
+      <td>Sábados</td>
+      <td>Cerrado</td>
+    </tr>
+
+    <tr>
+      <td>Domingos</td>
+      <td>Cerrado</td>
+    </tr>
+
+  </table>
+
+</section>
+
+
+<!-- =====================================================
+     💰 PLANES
+===================================================== -->
+
+<section id="precios">
+
+  <h2>Planes</h2>
+
+  <p class="descripcion">
+    Elegí el plan que mejor se adapte a vos.
+  </p>
+
+  <div class="cards">
+
+    <!-- PLAN SEMANAL -->
+    <div class="card">
+
+      <h3>Plan semanal</h3>
+
+      <div class="precio">
+        $300
+      </div>
+
+      <p>
+        Acceso al gimnasio durante 7 días.
+      </p>
+
+      <a
+        class="boton"
+        href="https://wa.me/59897164370?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20semanal"
+        target="_blank"
+      >
+        Consultar
+      </a>
+
+    </div>
+
+
+    <!-- PLAN MENSUAL -->
+    <div class="card">
+
+      <h3>Plan mensual</h3>
+
+      <div class="precio">
+        $1200
+      </div>
+
+      <p>
+        Acceso al gimnasio durante todo el mes.
+      </p>
+
+      <a
+        class="boton"
+        href="https://wa.me/59897164370?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20mensual"
+        target="_blank"
+      >
+        Consultar
+      </a>
+
+    </div>
+
+
+    <!-- PLAN ANUAL -->
+    <div class="card">
+
+      <h3>Plan anual</h3>
+
+      <div class="precio">
+        $14.400
+      </div>
+
+      <p>
+        Acceso al gimnasio durante todo el año.
+      </p>
+
+      <a
+        class="boton"
+        href="https://wa.me/59897164370?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20anual"
+        target="_blank"
+      >
+        Consultar
+      </a>
+
+    </div>
+
+  </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     📍 CONTACTO
+===================================================== -->
+
+<section
+  class="contacto"
+  id="contacto"
+>
+
+  <div class="contacto-grid">
+
+
+    <div class="datos">
+
+      <h2>Contacto</h2>
+
+      <p>
+        📍Chile, entre Gral. Artigas y Laguna 
+      </p>
+
+      <p>
+        📞 097 164 370
+      </p>
+
+    
+      <p>
+        🕐 Lunes a viernes 07:00 - 22:00
+      </p>
+
+    </div>
+
+
+    <div class="whatsapp">
+
+      <h3>
+        ¿Querés empezar?
+      </h3>
+
+      <p>
+        Escribinos por WhatsApp
+        y coordinamos tu primera visita.
+      </p>
+
+
+      <!-- CAMBIÁ EL NÚMERO -->
+      <a
+        href="https://wa.me/59897164370"
+        target="_blank"
+      >
+        💬 Escribir por WhatsApp →
+      </a>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     👇 PIE DE PÁGINA
+===================================================== -->
+
+<footer>
+
+  © 2026  IMPERIO Gym
+  · Todos los derechos reservados
+
+</footer>
+
+
+</body>
+</html>
